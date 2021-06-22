@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}Article par Catégories{% endblock %}
+{% block body %}
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner d-flex justify-content-center">
+    {% for element in mesArticles %}
+    <div class="carousel-item active m-2">
+      <img src="{{element.image}}" style="height:500px; widht:200px" alt="imagePrincipale">
+    </div>
+         {# les trois photo pouyr la page détail #}
+        <div class="carousel-item">
+            <img src="{{element.photo1}}" class="d-block w-100" alt="photo1">
+        </div>
+    <div class="carousel-item">
+      <img src="{{element.photo2}}" class="d-block w-100" alt="photo2">
+    </div>
+    <div class="carousel-item">
+      <img src="{{element.photo3}}" class="d-block w-100" alt="photo3">
+    </div>
+  </div>
+  <div class="col-5">
+          <h1>{{element.titre}}<h1>
+          <h6>Loyer: {{element.loyer}} €/mois<h6>
+          <h6>Localisation: {{element.localisation}}<h6>
+          <h6> Parking: {{element.parking}}<h6>
+          <h6>Terasse: {{element.terasse}}<h6>
+        <button class="btn btn-warning my-3"> Afficher pus </button>
+        {# le bouton pour afficher la suite de l'annonce #}
+           <h6 id="detail">{{element.transaction}}<h6>{# <p id="detail">{{element.contenu}}<p> #}
+      </div>
+  {% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script>
+	jQuery(document).ready(function()
+   {
+	   jQuery('#detail').hide();
+  jQuery('button').click(function()
+   {
+     jQuery('#detail').slideToggle(400);
+  return false;
+      });
+   });
+</script>
+{% endblock %}
