@@ -13,29 +13,31 @@ use Symfony\Component\HttpFoundation\Request;
 class SearchController extends AbstractController
 {
     /**
-     * @Route("admin/{id}/espaceAdmin/search", name="search")
-     */
-    public function searchArticle($id,UserRepository $userRepo ,Request $request,ArticleRepository $artRepo): Response
-    {  
-        $user = $userRepo->find($id);
-        $allArticle = $artRepo->findAll();
-        $req=$request->request->get('search');
-        print($req); 
-        foreach ($allArticle as $art) {
+    //  * @Route("admin/{id}/espaceAdmin/search", name="search")
+    //  */
+    // public function searchArticle($id,UserRepository $userRepo ,Request $request,ArticleRepository $artRepo): Response
+    // {  
+    //     $user=$userRepo->find($id);
+    //     $form = $this->createForm( SearchForm::class);
+     
+    //          $form->handleRequest($request);
+       
+           
+    //          if ($form->isSubmitted() && $form->isValid()) {
+
+    //             $art=$form->getData();
+    //             $art->setUpdatedAt(new \DateTime());
+    //             $manager->persist($art);
+    //             $manager->flush();
+    //         $this->addFlash(
+    //             'notice',
+    //             'Felicitation, votre article a été ajouter avec succès !',
+    //         );
+    //         return $this->redirectToRoute('espaceAdmin',['id' => $user->getId()]);
+    //      }
          
-           if (
-                $art->getId() == $req &&
-                $request->request->count() > 0 
-            ) {
-                return $this->render('search/resultat.html.twig', [
-                    'mesArticles' => $art, 
-                    'ArtREcherche'=> $req,
-                    'connectedUser' =>$user                ]);
-            }
-        }
-        return $this->redirectToRoute('espaceAdmin',['id' => $user->getId()]);
-            
-
-
+    //         return $this->render('formulaire/ajouterArticle.html.twig',[
+    //             'form' => $form->createView()]);
+    //      }
+     
     }
-}

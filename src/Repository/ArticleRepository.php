@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -36,15 +37,18 @@ class ArticleRepository extends ServiceEntityRepository
     }
     */
 
-    
-    public function searcheArticle($critere): ?Article
+     /**
+      *@return Article[]|null
+      */
+    public function findSearch(SearchData $search): array
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :reference')
-            ->setParameter('reference', $critere)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $query=$this
+          ->createQueryBuilder('a');
+        if(!empty($search->q))
+        {$query=$query
+            ->andWhere('a.id =:q')
+            ->setParameter('q', $search->q);}
+      return $query->getQuery()->getResult() ;
     }
-    
+
 }

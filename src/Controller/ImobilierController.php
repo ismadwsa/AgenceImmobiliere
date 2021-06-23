@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Article;
 use App\Form\AjouterArticleType;
+use App\Form\SearchForm;
 use App\Repository\ArticleRepository;
 use App\Repository\departementRepository;
 use App\Repository\CategorieRepository;
@@ -57,15 +59,21 @@ class ImobilierController extends AbstractController
     /**
      * @Route("admin/{id}/espaceAdmin", name="espaceAdmin")
      */
-    public function espaceAdmin( $id, UserRepository $userRepo,ArticleRepository $artRepo): Response {
+    public function espaceAdmin( $id, UserRepository $userRepo,ArticleRepository $artRepo,Request $request): Response {
        
         $user = $userRepo->find($id);
-        $art = $artRepo->findAll();
+        
+        $data= new SearchData();
+        $form = $this->createForm( SearchForm::class,$data); 
+        $form->handleRequest($request);
+    
+        $art = $artRepo->findSearch($data);
+      
         return $this->render('espaceAdmin/accueilAdmin.html.twig', [
-            'connectedUser' => $user,  'mesArticles' => $art
+            'connectedUser' => $user,  'mesArticles' => $art,'form' => $form->createView()
         ]);
     }
-      /**
+    /**
      * @Route("/article/{id}/categorie", name="articleOfCat")
      */
     public function articleOfCat(CategorieRepository $catRepo, $id)

@@ -12,17 +12,8 @@
       IsmaHome
     </a>
       <!-- Search form -->
-      <form class="input-group w-auto my-auto d-none d-sm-flex"  method="post">
-        <input
-          name="search"
+     	{{form(form)}}
       
-          placeholder="Search"
-          style="min-width: 125px;"
-        />
-         <a href="{{ path('search', {'id' : connectedUser.id} ) }} "> <span class="input-group-text border-0 d-none d-lg-flex"
-          ><i class="fas fa-search"></i
-        ></span></a>
-      </form>
     </div>
     <!-- Left elements -->
 
@@ -82,6 +73,12 @@
       <th scope="col">Afficher</th>
     </tr>
   </thead>
+  {%  if not mesArticles  %} 
+        <div class="alert alert-danger" role="alert">
+        Aucun élément ne correspond à votre recherche
+        </div>
+  {% endif %}
+
   {% for element in mesArticles %}
   <tbody>
       <td>{{element.id}}</td>
@@ -96,6 +93,9 @@
   </tbody> 
   {% endfor %}
 </table>
-<button class='btn btn-success'><a href="{{ path('ajoutArt', {'id' : connectedUser.id} ) }}">Ajouter un article</a></button>
+<button class='btn btn-success' href="{{ path('ajoutArt', {'id' : connectedUser.id} ) }}">Ajouter un article</button>
+ {%  if not mesArticles  %} <button class='btn btn-success' href="{{ path('espaceAdmin', {'id' : connectedUser.id} ) }}">Retour</button>
+{% endif %}
+
 </div>
 {% endblock %}
