@@ -31,30 +31,20 @@
           <strong class="d-none d-sm-block ms-1">{{connectedUser.prenom}}</strong>
         </a>
       </li>
-      <li class="nav-item dropdown me-3 me-lg-1">
-        <a
-          class="nav-link  hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <i class="fas fa-chevron-circle-down fa-lg"></i>
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
-          <li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+       
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+       
+            <li>
             <a class="dropdown-item" href="{{ path('user',{'id':connectedUser.id}) }} ">Paramettre</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Se Déconnecter</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+            </li> 
+            <li>
+            <a class="dropdown-item" href="{{ path('deco' )}} ">Se Déconnecter</a>
+            </li>
+          </ul>
+        </li>
     <!-- Right elements -->
   </div>
 </nav>
@@ -87,15 +77,12 @@
        <td></td>
       <td>{{element.loyer}} €/Mois</td>
       <td><a href="{{ path('suppArt' , {'idu' : connectedUser.id , 'id' : element.id} )}}" class="btn btn-danger my-3 ">Suprimer</a></td> 
-      <td><a href="#" class="btn btn-primary my-3 ">Modifier</a>    </td> 
+      <td><a href="{{ path('updateArticle' , {'idU' : connectedUser.id , 'id' : element.id} )}}" class="btn btn-primary my-3 ">Modifier</a>    </td> 
       <td><a href="{{ path('detailArticle' , {'id' : element.id} )}}" class="btn btn-primary my-3">Voir</a> </td> 
      </th>
   </tbody> 
   {% endfor %}
 </table>
-<button class='btn btn-success' href="{{ path('ajoutArt', {'id' : connectedUser.id} ) }}">Ajouter un article</button>
- {%  if not mesArticles  %} <button class='btn btn-success' href="{{ path('espaceAdmin', {'id' : connectedUser.id} ) }}">Retour</button>
-{% endif %}
-
-</div>
+<a href="{{ path('ajoutArt', {'id' : connectedUser.id} ) }}" class='btn btn-success'>Ajouter un article</a>
+ {%  if not mesArticles  %} <a class='btn btn-success' href="{{ path('espaceAdmin', {'id' : connectedUser.id} ) }}">Retour</a></div> {% endif %}
 {% endblock %}

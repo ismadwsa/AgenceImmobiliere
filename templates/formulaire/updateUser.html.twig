@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter un article
+{% endblock %}
+{% block body %}
+
+	<h1>Modifier Mes cordonnées </h1>
+<div class="container mt-7">
+    <div class="row justify-content-around justify-content-center">
+            {{ form_start(formUser) }}
+            {{ form_widget(formUser.nom) }} <br><br> 
+            {{ form_widget(formUser.prenom) }} <br><br> 
+            {{ form_widget(formUser.email) }} <br><br> 
+            {{ form_widget(formUser.password) }} <br><br> 
+            <button type="submit" class="btn btn-warning">Enregistrer</button>
+            {{ form_end(formUser) }}
+    </div>
+</div>
+  
+
+{% endblock %}

@@ -7,9 +7,5 @@ class SearchData
     /**
      * @var null/integer
      */ 
-    public $q;
-
-
-
-   
+    public $q;  
 }

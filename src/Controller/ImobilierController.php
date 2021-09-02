@@ -7,7 +7,6 @@ use App\Entity\Article;
 use App\Form\AjouterArticleType;
 use App\Form\SearchForm;
 use App\Repository\ArticleRepository;
-use App\Repository\departementRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -79,10 +78,18 @@ class ImobilierController extends AbstractController
     public function articleOfCat(CategorieRepository $catRepo, $id)
     {
         $cat = $catRepo->find($id);
-        $article = $cat->getArticles();
+        $article = $cat->getArticles(); 
+        if($article == null){
+            $this->addFlash(
+                'notice',
+                'aucun bien disponible pour le moment !!',
+            );
+        }
+        else 
         return $this->render('categories/articleOfCategorie.html.twig', [
             'mesArticles' => $article,
         ]);
+       
     }
 
     /**

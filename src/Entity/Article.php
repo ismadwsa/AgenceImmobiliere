@@ -275,7 +275,7 @@ class Article
         return $this;
     }
 
-    public function getCategorie(): ?Collection
+    public function getCategorie(): ?collection
     {
         return $this->categorie;
     }

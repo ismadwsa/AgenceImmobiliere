@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UpdateUserType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,7 +29,7 @@ class UserController extends AbstractController
     public function user($id, UserRepository $userRepo): Response
     {
         $user = $userRepo->find($id);
-        return $this->render('user/user.html.twig', [
+        return $this->render('user/cordonnées.html.twig', [
             'connectedUser' => $user
         ]);
     }
@@ -33,26 +38,27 @@ class UserController extends AbstractController
      */
     public function deco(): Response
     {
-        return $this->redirectToRoute('admin');
+        return $this->redirectToRoute('accueil');
     }
     /**
      * @Route("/updateUser/{id}", name="updateUser")
      */
-    public function updateUser(Request $request, User $useree): Response
+    public function updateUser(Request $request,User $user): Response
     {
         $manager = $this->getDoctrine()->getManager();
-        if ($request->request->count() == 0) {
-            return $this->render('espaceAdmin/updateUser.html.twig', [
-                'myUser' => $useree
-            ]);
-        } else {
-            $useree->setNom($request->request->get('nom'));
-            $useree->setPrenom($request->request->get('prenom'));
-            $useree->setEmail($request->request->get('email'));
-            $useree->setPassword($request->request->get('password'));
-            $manager->persist($useree);
+        $form = $this->createForm( UpdateUserType::class,$user); 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $manager->flush();
-            return $this->redirectToRoute('user', ['id' => $useree->getId()]);
-        }
+        $this->addFlash(
+            'notice',
+            'Felicitation,modification de vos cordonnées avec succées !',
+        );
+        return $this->redirectToRoute('espaceAdmin',['id' => $user->getId()]);
+    }
+
+        return $this->render('formulaire/updateUser.html.twig',[
+            'formUser' => $form->createView()]);
     }
 }

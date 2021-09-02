@@ -22,8 +22,6 @@ class SearchForm extends AbstractType
                 'placeholder'=>'Réference du bien'
                 ]
              ]);
-        
-
     }
 
     public function configureOptions(OptionsResolver $resolver)
