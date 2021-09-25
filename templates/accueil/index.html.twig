@@ -44,8 +44,9 @@
     <h6 class="card-title">Reference: {{element.id}}</h6>
     <p class="card-text">{{element.loyer}} € /Mois</p>
     <strong class="card-text">localisation:</strong> {{element.localisation}}
-    <a href="{{ path('detailArticle' , {'id' : element.id} )}}" class="btn btn-primary my-3">Détail</a>  
+     
   </div>
+  <a href="{{ path('detailArticle' , {'id' : element.id} )}}" class="btn btn-primary mb-1">Détail</a> 
 </div>
 {% endfor %}
 </div>
