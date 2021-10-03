@@ -24,6 +24,7 @@ class AjouterArticleType extends AbstractType
             ->add('image',FileType::class)
             ->add('titre',TextType::class)
             ->add('pieces',NumberType::class)
+            ->add('contenu',TextType::class)
             ->add('terasse',ChoiceType::class, [
                 'choices'  => [
                     

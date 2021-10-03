@@ -23,12 +23,10 @@
           <h1>{{mesArticles.titre}}<h1>
           <h6>Loyer: {{mesArticles.loyer}} €/mois<h6>
           <h6>Localisation: {{mesArticles.localisation}}<h6>
-          <h6> Parking: {{mesArticles.parking}}<h6>
+          <h6>Parking: {{mesArticles.parking}}<h6>
           <h6>Terasse: {{mesArticles.terasse}}<h6>
           <button class="btn btn-warning my-3" id="affichage"> Afficher plus </button>
-          <h6 id="detail">{{mesArticles.titre}}: Ce bien est situé à {{mesArticles.localisation}}, composé de {{mesArticles.pieces}} piéces................... 
-          .....................
-          ..................... <h6>{# <p id="detail">{{mesArticles.contenu}}<p> #}
+          <p id="detail">{{mesArticles.contenu}}<p>
       
 
 <a href="{{ path('accueil') }}"><button class='btn btn-danger my-3'>Retour</button></a>
