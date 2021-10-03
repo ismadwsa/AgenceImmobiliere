@@ -48,15 +48,14 @@ class AjouterArticleType extends AbstractType
                               ],
                 ])
             ->add('transaction',ChoiceType::class,[
-                'choices'  => [
-                  
+                    'choices'  => [
                     'Location' => 'Location',
                     'Vente' => 'Vente',
                               ],
                 ])
-            ->add('photo1',TextType::class)
-            ->add('photo2',TextType::class)
-            ->add('photo3',TextType::class)
+            ->add('photo1',FileType::class)
+            ->add('photo2',FileType::class)
+            ->add('photo3',FileType::class)
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'mapped'=>true

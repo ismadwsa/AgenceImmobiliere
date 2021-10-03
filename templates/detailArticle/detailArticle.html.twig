@@ -4,20 +4,21 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner d-flex justify-content-center">
     <div class="carousel-item active m-2">
-      <img src="/image/articles/imagePrincipale/{{mesArticles.imageName}}" style="height:500px; widht:200px" alt="imagePrincipale">
+      <img src="/image/articles/imagePrincipale/{{mesArticles.imageName}}" style="height:200px; widht:50px" alt="imagePrincipale">
+             <img src="/image/articles/photo/{{mesArticles.photoName}}" style="height:200px; widht:50px" alt="photo2">
+             <img src="/image/articles/photo/{{mesArticles.photoName2}}" style="height:200px; widht:50px" alt="photo2">
+             <img src="/image/articles/photo/{{mesArticles.photoName3}}" style="height:200px; widht:50px" alt="photo2">
     </div>
-         
-      <div class="carousel-item">
-        <img src="" class="d-block w-100" alt="photo1">
+      <div class="carousel-item" >
+        <img src="/image/articles/photo/{{mesArticles.photoName}}" style="height:500px; widht:200px" alt="photo1">
       </div>
       <div class="carousel-item">
-        <img src="" class="d-block w-100" alt="photo2">
+        <img src="/image/articles/photo/{{mesArticles.photoName2}}" style="height:500px; widht:200px" alt="photo2">
       </div>
       <div class="carousel-item">
-        <img src="" class="d-block w-100" alt="photo3">
+        <img src="/image/articles/photo/{{mesArticles.photoName3}}"style="height:500px; widht:200px" alt="photo3">
       </div>
     </div>
-
    <div class="col-5">
           <h1>{{mesArticles.titre}}<h1>
           <h6>Loyer: {{mesArticles.loyer}} €/mois<h6>
@@ -25,7 +26,7 @@
           <h6> Parking: {{mesArticles.parking}}<h6>
           <h6>Terasse: {{mesArticles.terasse}}<h6>
           <button class="btn btn-warning my-3" id="affichage"> Afficher plus </button>
-          <h6 id="detail">{{mesArticles.titre}}: Ce bien situer à {{mesArticles.localisation}} est composé de {{mesArticles.pieces}} piéces................... 
+          <h6 id="detail">{{mesArticles.titre}}: Ce bien est situé à {{mesArticles.localisation}}, composé de {{mesArticles.pieces}} piéces................... 
           .....................
           ..................... <h6>{# <p id="detail">{{mesArticles.contenu}}<p> #}
       

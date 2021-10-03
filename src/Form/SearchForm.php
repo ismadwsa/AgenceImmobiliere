@@ -17,13 +17,12 @@ class SearchForm extends AbstractType
     {
         $builder
             ->add('q',TextType::class,[
-           'label'=>false,
+            'label'=>false,
             'attr'=>[
-                'placeholder'=>'Réference du bien'
+            'placeholder'=>'Réference du bien'
                 ]
              ]);
     }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
